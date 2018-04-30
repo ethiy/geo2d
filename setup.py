@@ -2,7 +2,10 @@
 # -*- coding: <utf-8> -*-
 
 from setuptools import setup, find_packages
+from requirements import parse
+
 from geo2d import config
+
 
 def readme():
     """
@@ -16,8 +19,8 @@ def requirements():
     """
     Get requirements to install.
     """
-    with open('requirements.txt', 'r') as requirefile:
-        return [line.strip() for line in requirefile.readlines() if line]
+    with open('requirements.txt', 'r') as req:
+        return [dep.name for dep in parse(req)]
 
 
 setup(
