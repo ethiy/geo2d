@@ -1,7 +1,6 @@
 # -*- coding: <utf-8> -*-
 
 import os
-import fnmatch
 
 import logging
 
@@ -19,17 +18,17 @@ geo_vector_logger = logging.getLogger(__name__)
 
 class GeoShape:
     """
-        Geographic raster.
-        Attribute `reference_point` stores the reference point.
-        Attribute `pixel_sizes` stores the horizontal and vertical resolutions.
-        Attribute `image` stores the matrix image.
+        Geographic vector entity.
+        Attribute `geometry` stores the entity geometry.
+        Attribute `bbox` stores the geometry bounding box.
+        Attribute `area` stores the entity area.
     """
 
     def __init__(self, geometry):
         """
             Initiate GeoShape class.
-            :param :
-            :type geometry:
+            :param geometry: the entity geometry
+            :type geometry: MultiPolygon
         """
         self.geometry = geometry
         self.bbox = tuple(utils.chunk(self.geometry.bounds, 2))
