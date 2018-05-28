@@ -11,7 +11,7 @@ def readme():
     """
     Longer description from readme.
     """
-    with open('ReadMe.md', 'r') as readmefile:
+    with open('README.md', 'r') as readmefile:
         return readmefile.read()
 
 
