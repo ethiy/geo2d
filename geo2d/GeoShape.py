@@ -24,7 +24,7 @@ class GeoShape:
         Attribute `area` stores the entity area.
     """
 
-    def __init__(self, geometry):
+    def __init__(self, geometry=shapely.geometry.Polygon()):
         """
             Initiate GeoShape class.
             :param geometry: the entity geometry
