@@ -21,6 +21,19 @@ import matplotlib.pyplot as plt
 geo_raster_logger = logging.getLogger(__name__)
 
 
+def add_margins(bbox, resolution, margins):
+    return (
+        (
+            bbox[0][0] - resolution[0] * margins[0],
+            bbox[0][1] + resolution[1] * margins[1]
+        ),
+        (
+            bbox[1][0] + resolution[0] * margins[0],
+            bbox[1][1] - resolution[1] * margins[1]
+        )
+    )
+
+
 def geo_info(raster_name, margins=(0, 0)):
     geo_raster_logger.info(
         'Getting %s bounding box and resolution.',
