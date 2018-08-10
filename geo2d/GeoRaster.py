@@ -111,13 +111,11 @@ class GeoRaster:
         self.dtype = self.image.dtype
 
     @classmethod
-    def from_file(cls, filename, dtype=np.uint8):
+    def from_file(cls, filename):
         """
             Create GeoRaster `cls` from file in `filname`.
             :param filename: file path
             :type filename: string
-            :param dtype: depth type
-            :type dtype: type
             :return: cls
             :rtype: GeoRaster
         """
@@ -128,11 +126,11 @@ class GeoRaster:
             (px, py),
             np.dstack(
                 [
-                    dataset.GetRasterBand(band).ReadAsArray().astype(dtype)
+                    dataset.GetRasterBand(band).ReadAsArray()
                     for band in range(1, dataset.RasterCount + 1)
                 ]
             ) if dataset.RasterCount > 1
-            else dataset.GetRasterBand(1).ReadAsArray().astype(dtype)
+            else dataset.GetRasterBand(1).ReadAsArray()
         )
 
     def clone(self):
